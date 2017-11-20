@@ -11,10 +11,11 @@ object SyntaxTest {
   }
 
   def main(args: Array[String]): Unit = {
-    val result = List(new Person("Leo", "Pard", 21), new Person("Lili", "Bertine", 33), new Person("Lenny", "Bar", 49)) |>
-      ("age" _lte 33) |>
-      ("firstname" _eq "Lili")
-      //("age" between (4 and 7))
+    val result = List(new Person("Leo", "Pard", 21), new Person("Lili", "Bertine", 33), new Person("Lenny", "Bar", 49), new Person("Ulla", "Vesuve", 29), new Person("Max", "Puissant", 31)) |>
+      ("age" _between (27 and 37)) |>
+      ("firstname" _contains "l") |>
+      (orderBy("firstname") desc) |>
+      (limit(1))
     println(result.toList)
   }
 }
